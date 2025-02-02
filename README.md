@@ -1,6 +1,12 @@
-# YouTube Summarizer
+## YouTube Summarizer
 
 This project is a YouTube video summarizer that extracts key points from YouTube videos.
+
+## Demo
+
+
+
+https://github.com/user-attachments/assets/aa62edcd-ee93-45eb-9229-edda067f7e2a
 
 ## Installing Ollama
 
@@ -41,11 +47,5 @@ This project is a YouTube video summarizer that extracts key points from YouTube
   ```
 
 2. Follow the on-screen instructions to input the YouTube video URL.
-
-## Demo
-
-
-
-https://github.com/user-attachments/assets/aa62edcd-ee93-45eb-9229-edda067f7e2a
 
 
