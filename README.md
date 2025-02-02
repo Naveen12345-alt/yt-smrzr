@@ -37,7 +37,7 @@ This project is a YouTube video summarizer that extracts key points from YouTube
 
 1. Run the summarizer script:
   ```sh
-  python summarizer.py
+  streamlit run streamlit_app.py
   ```
 
 2. Follow the on-screen instructions to input the YouTube video URL.
