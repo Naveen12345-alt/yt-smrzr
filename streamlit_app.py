@@ -135,30 +135,45 @@ class YouTubeSummarizer:
 
     def summarize_video(self, youtube_url: str) -> dict:
         """
-        Main pipeline for video summarization.
-        Handles the entire process from URL to summary generation.
-
-        Args:
-            youtube_url (str): URL of the YouTube video
-
-        Returns:
-            dict: Contains status, summary, and video ID or error message
+        Main pipeline for video summarization with proper summary extraction.
         """
         try:
-            # Extract video ID and validate URL
+            # Step 1: Extract video ID
             video_id = self.extract_video_id(youtube_url)
             if not video_id:
                 return {"status": "error", "message": "Invalid YouTube URL"}
 
-            # Get transcript and process through summarization pipeline
+            # Step 2: Get transcript
             transcript = self.get_transcript(video_id)
-            texts = self.text_splitter.create_documents([transcript])
-            summary = self.chain.invoke(texts)
 
-            return {"status": "success", "summary": summary, "video_id": video_id}
+            # Step 3: Split text
+            texts = self.text_splitter.create_documents([transcript])
+
+            # Step 4: Generate and extract summary
+            chain_response = self.chain.invoke(texts)
+
+            # Extract the summary text from the response
+            if isinstance(chain_response, dict) and "output_text" in chain_response:
+                summary_text = chain_response["output_text"]
+            else:
+                # If structure is different, try to convert the whole response to string
+                summary_text = str(chain_response)
+
+            # Clean up the summary formatting
+            summary_text = summary_text.strip()
+
+            return {
+                "status": "success",
+                "summary": summary_text,  # Now we're returning just the summary text
+                "video_id": video_id,
+            }
 
         except Exception as e:
-            return {"status": "error", "message": str(e)}
+            import traceback
+
+            error_trace = traceback.format_exc()
+            st.error(f"Error details:\n{error_trace}")
+            return {"status": "error", "message": str(e), "trace": error_trace}
 
 
 def main():
@@ -249,7 +264,7 @@ def main():
                             video_id = result["video_id"]
                             st.image(
                                 f"https://img.youtube.com/vi/{video_id}/maxresdefault.jpg",
-                                use_column_width=True,
+                                use_container_width=True,
                             )
 
                             # Show formatted summary
@@ -257,7 +272,11 @@ def main():
                             st.markdown(
                                 '<div class="summary-box">', unsafe_allow_html=True
                             )
-                            st.markdown(result["summary"])
+
+                            # Convert the summary to markdown for better formatting
+                            summary_text = result["summary"]
+                            st.markdown(summary_text)
+
                             st.markdown("</div>", unsafe_allow_html=True)
 
                             # Add copy functionality

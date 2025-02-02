@@ -2,6 +2,17 @@
 
 This project is a YouTube video summarizer that extracts key points from YouTube videos.
 
+## Installing Ollama
+
+1. Install Ollama locally:
+  - Visit the [Ollama official website](https://www.ollama.com)
+  - Follow the instructions to download and install Ollama for your operating system.
+
+2. Install the required Ollama model (ollama3.2):
+  ```sh
+  ollama pull llama3.2
+  ```
+  
 ## Prerequisites
 
 - Python >3.7
@@ -32,19 +43,3 @@ This project is a YouTube video summarizer that extracts key points from YouTube
 ## License
 
 This project is licensed under the MIT License.
-
-## Installing Ollama
-
-1. Install Ollama locally:
-  ```sh
-  pip install ollama
-  ```
-
-2. Install the required Ollama model (ollama3.2):
-  ```sh
-  ollama install ollama3.2
-  ```
-
-3. Alternatively, you can install Ollama from the official website:
-  - Visit the [Ollama official website](https://www.ollama.com)
-  - Follow the instructions to download and install Ollama for your operating system.
