@@ -16,6 +16,7 @@ This project is a YouTube video summarizer that extracts key points from YouTube
 ## Prerequisites
 
 - Python >3.7
+- venv python environment manager
 - Required Python packages (listed in `requirements.txt`)
 
 ## Installation
@@ -28,6 +29,7 @@ This project is a YouTube video summarizer that extracts key points from YouTube
 
 2. Install the required packages:
   ```sh
+  python -m venv v1
   pip install -r requirements.txt
   ```
 
@@ -40,6 +42,10 @@ This project is a YouTube video summarizer that extracts key points from YouTube
 
 2. Follow the on-screen instructions to input the YouTube video URL.
 
-## License
+## Demo
 
-This project is licensed under the MIT License.
+
+
+https://github.com/user-attachments/assets/aa62edcd-ee93-45eb-9229-edda067f7e2a
+
+
