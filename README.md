@@ -29,7 +29,7 @@ https://github.com/user-attachments/assets/aa62edcd-ee93-45eb-9229-edda067f7e2a
 
 1. Clone the repository:
   ```sh
-  git clone https://github.com/yourusername/yt-smrzr.git
+  git clone [https://github.com/yourusername/yt-smrzr.git](https://github.com/Naveen12345-alt/yt-smrzr)
   cd yt-smrzr
   ```
 
